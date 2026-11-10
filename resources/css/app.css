@@ -1,0 +1,365 @@
+/* ============================================================
+   Kiswa Health Centre III — Drug Inventory System
+   Clinical Blue & White Design System v3.0
+   Layered on Bootstrap 5
+
+   Palette:
+     60% Background  : Pure White #FFFFFF / Soft Mist #E8F1F5
+     30% Primary     : Deep Ocean Blue #0B4F6C / #0E6E8C
+     10% Accent/CTA  : Warm Teal #0D9488 / Soft Blue #3B9EBF
+     Body Text       : Dark Ink #16262E (15.5:1 contrast ratio)
+   ============================================================ */
+
+:root {
+    /* ── Core Clinical Blue ──────────────────────────────── */
+    --kiswa-blue:        #0B4F6C;
+    --kiswa-blue-mid:    #0E6E8C;
+    --kiswa-blue-bright: #1A8FB5;
+    --kiswa-blue-light:  #D0E8F2;
+    --kiswa-blue-xlight: #EBF5FA;
+    --kiswa-blue-mist:   #E8F1F5;
+
+    /* ── Accent — Warm Teal ───────────────────────────────── */
+    --kiswa-teal:        #0D9488;
+    --kiswa-teal-dark:   #0A7369;
+    --kiswa-teal-light:  #CCFBF1;
+
+    /* ── Accent — Soft Blue CTA ───────────────────────────── */
+    --kiswa-cta:         #3B9EBF;
+    --kiswa-cta-dark:    #2A7F9E;
+
+    /* ── Legacy green (kept for status badges only) ─────── */
+    --kiswa-green:       #16a34a;
+    --kiswa-green-dark:  #15803d;
+    --kiswa-green-light: #dcfce7;
+
+    /* ── Typography ───────────────────────────────────────── */
+    --kiswa-ink:         #16262E;   /* Dark Ink — 15.5:1 on white */
+    --kiswa-ink-mid:     #2E4A56;
+    --kiswa-ink-muted:   #5B7F8E;
+
+    /* ── Layout ───────────────────────────────────────────── */
+    --sidebar-width:     260px;
+    --topbar-height:     60px;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--kiswa-blue-mist);   /* 60% Soft Mist */
+    color: var(--kiswa-ink);              /* Dark Ink body text */
+}
+
+/* ── Sidebar  —  Deep Ocean Blue ─────────────────────────── */
+#sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: linear-gradient(180deg, #0B4F6C 0%, #0D5F80 55%, #0A4560 100%);
+    overflow-y: auto;
+    z-index: 1040;
+    transition: transform .3s ease;
+}
+
+#sidebar .sidebar-brand {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+#sidebar .sidebar-brand img {
+    width: 36px; height: 36px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+#sidebar .sidebar-brand .brand-text {
+    font-size: .82rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+}
+
+#sidebar .sidebar-brand .brand-sub {
+    font-size: .68rem;
+    color: rgba(255,255,255,.55);
+}
+
+#sidebar .nav-section-label {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,.38);
+    text-transform: uppercase;
+    padding: .9rem 1.25rem .3rem;
+    list-style: none;
+}
+
+#sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .55rem 1.25rem;
+    color: rgba(255,255,255,.75);
+    font-size: .88rem;
+    border-radius: 0;
+    transition: background .2s, color .2s, padding-left .18s;
+    text-decoration: none;
+}
+
+#sidebar .nav-link i {
+    width: 18px;
+    text-align: center;
+    font-size: .95rem;
+    flex-shrink: 0;
+}
+
+#sidebar .nav-link:hover {
+    background: rgba(255,255,255,.1);
+    color: #fff;
+    padding-left: 1.45rem;
+}
+
+#sidebar .nav-link.active {
+    background: rgba(255,255,255,.14);
+    color: #fff;
+    border-left: 3px solid var(--kiswa-cta);
+    padding-left: calc(1.25rem - 3px);
+    font-weight: 600;
+}
+
+#sidebar .nav-link .badge { margin-left: auto; font-size: .65rem; }
+
+/* ── Top bar  —  Pure White ───────────────────────────────── */
+#topbar {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: var(--topbar-height);
+    background: #fff;
+    border-bottom: 1px solid var(--kiswa-blue-light);
+    z-index: 1030;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: 1rem;
+    box-shadow: 0 1px 4px rgba(11,79,108,.07);
+}
+
+#topbar .page-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--kiswa-blue);
+    margin: 0;
+}
+
+#topbar .topbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#topbar .alert-bell {
+    position: relative;
+    color: var(--kiswa-ink-muted);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color .15s;
+}
+#topbar .alert-bell:hover { color: var(--kiswa-blue); }
+
+#topbar .alert-bell .badge {
+    position: absolute;
+    top: -5px; right: -6px;
+    font-size: .6rem;
+    padding: 2px 4px;
+}
+
+/* ── Main content  —  Soft Mist page background ───────────── */
+#main-content {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--topbar-height);
+    padding: 1.5rem;
+    min-height: calc(100vh - var(--topbar-height));
+}
+
+/* ── Cards  —  Pure White ─────────────────────────────────── */
+.card {
+    border: 1px solid var(--kiswa-blue-light);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(11,79,108,.07);
+    background: #fff;
+}
+
+.card-header {
+    background: #fff;
+    border-bottom: 1px solid var(--kiswa-blue-light);
+    font-weight: 700;
+    font-size: .9rem;
+    padding: .8rem 1.1rem;
+    border-radius: 10px 10px 0 0 !important;
+    color: var(--kiswa-blue);
+}
+
+/* ── Metric cards  —  Clinical Blue gradients ─────────────── */
+.metric-card {
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card .metric-icon {
+    position: absolute;
+    right: 1rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.8rem;
+    opacity: .15;
+}
+
+.metric-card .metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.metric-card .metric-label {
+    font-size: .78rem;
+    opacity: .9;
+    margin-top: .25rem;
+}
+
+/* Blue as the new primary — teal as secondary accent */
+.metric-card.blue   { background: linear-gradient(135deg, #0B4F6C, #1A8FB5); }
+.metric-card.teal   { background: linear-gradient(135deg, #0A7369, #0D9488); }
+.metric-card.cta    { background: linear-gradient(135deg, #2A7F9E, #3B9EBF); }
+.metric-card.green  { background: linear-gradient(135deg, #15803d, #16a34a); }
+.metric-card.orange { background: linear-gradient(135deg, #c2410c, #ea580c); }
+.metric-card.red    { background: linear-gradient(135deg, #b91c1c, #dc2626); }
+.metric-card.amber  { background: linear-gradient(135deg, #b45309, #d97706); }
+.metric-card.purple { background: linear-gradient(135deg, #6d28d9, #7c3aed); }
+
+/* ── Status badges ────────────────────────────────────────── */
+.badge-adequate { background: var(--kiswa-green-light); color: #14532d; }
+.badge-low      { background: #fef3c7; color: #92400e; }
+.badge-out      { background: #fee2e2; color: #991b1b; }
+.badge-critical { background: #fee2e2; color: #991b1b; }
+.badge-warning  { background: #fef3c7; color: #92400e; }
+.badge-soon     { background: var(--kiswa-blue-light); color: var(--kiswa-blue); }
+.badge-ok       { background: var(--kiswa-green-light); color: #14532d; }
+
+/* ── Tables ───────────────────────────────────────────────── */
+.table th {
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--kiswa-blue);
+    background: var(--kiswa-blue-mist);
+    border-bottom: 2px solid var(--kiswa-blue-light);
+}
+
+.table td {
+    font-size: .875rem;
+    vertical-align: middle;
+    color: var(--kiswa-ink);
+}
+
+.table-hover tbody tr:hover { background: var(--kiswa-blue-xlight); }
+
+/* ── Alert banners ────────────────────────────────────────── */
+.alert-kiswa {
+    border-left: 4px solid;
+    border-radius: 6px;
+}
+.alert-kiswa.low-stock { border-color: #d97706; background: #fffbeb; }
+.alert-kiswa.expiry    { border-color: #dc2626; background: #fef2f2; }
+.alert-kiswa.info      { border-color: var(--kiswa-blue-mid); background: var(--kiswa-blue-xlight); }
+
+/* ── Forms ────────────────────────────────────────────────── */
+.form-label {
+    font-size: .84rem;
+    font-weight: 600;
+    color: var(--kiswa-ink-mid);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--kiswa-blue-mid);
+    box-shadow: 0 0 0 .2rem rgba(14,110,140,.18);
+}
+
+/* ── Buttons  —  Deep Ocean Blue primary ─────────────────── */
+.btn-kiswa {
+    background: var(--kiswa-blue);
+    color: #fff;
+    border: 1px solid var(--kiswa-blue);
+    font-weight: 600;
+}
+.btn-kiswa:hover, .btn-kiswa:focus {
+    background: var(--kiswa-blue-mid);
+    border-color: var(--kiswa-blue-mid);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(11,79,108,.28);
+}
+
+.btn-teal {
+    background: var(--kiswa-teal);
+    color: #fff;
+    border: 1px solid var(--kiswa-teal);
+    font-weight: 600;
+}
+.btn-teal:hover, .btn-teal:focus {
+    background: var(--kiswa-teal-dark);
+    border-color: var(--kiswa-teal-dark);
+    color: #fff;
+}
+
+.btn-outline-kiswa {
+    background: transparent;
+    color: var(--kiswa-blue);
+    border: 1px solid var(--kiswa-blue);
+    font-weight: 600;
+}
+.btn-outline-kiswa:hover {
+    background: var(--kiswa-blue-xlight);
+    color: var(--kiswa-blue-mid);
+}
+
+/* ── Pagination ───────────────────────────────────────────── */
+.page-link { color: var(--kiswa-blue); }
+.page-link:hover { color: var(--kiswa-blue-mid); background: var(--kiswa-blue-xlight); }
+.page-item.active .page-link {
+    background: var(--kiswa-blue);
+    border-color: var(--kiswa-blue);
+    color: #fff;
+}
+
+/* ── Print styles ─────────────────────────────────────────── */
+@media print {
+    #sidebar, #topbar, .no-print { display: none !important; }
+    #main-content { margin: 0 !important; padding: 0 !important; }
+    .card { box-shadow: none !important; border: 1px solid #ccc !important; }
+    body { background: #fff !important; font-size: 11pt; color: #000; }
+}
+
+/* ── Responsive sidebar collapse ─────────────────────────── */
+@media (max-width: 991.98px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.show { transform: translateX(0); }
+    #topbar, #main-content { left: 0; margin-left: 0; }
+}
+
+/* ── Utilities ────────────────────────────────────────────── */
+.text-kiswa      { color: var(--kiswa-blue) !important; }
+.bg-kiswa        { background: var(--kiswa-blue) !important; }
+.border-kiswa    { border-color: var(--kiswa-blue) !important; }
+.text-kiswa-dark { color: var(--kiswa-blue-mid) !important; }
+.text-clinical   { color: var(--kiswa-blue) !important; }
+.bg-mist         { background: var(--kiswa-blue-mist) !important; }
+.fs-xs           { font-size: .75rem; }
+.fs-sm           { font-size: .85rem; }
+.cursor-pointer  { cursor: pointer; }
